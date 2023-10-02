@@ -14,7 +14,7 @@ bouttonPrendre.id = 'prendre';
 bouttonPrendre.textContent = 'Prendre';
 
 
-const bouttonAcheter = document.querySelector('#start');
+let bouttonAcheter = document.querySelector('#start');
 
 function init(){
   const elementsAjoutes = wrapper.querySelectorAll(':not([data-preserve])');
@@ -26,6 +26,10 @@ function init(){
   wrapper.appendChild(bouttonPrendre);
 
   bouttonAcheter.textContent = "Acheter";
+
+  const boutonAcheterClone = bouttonAcheter.cloneNode(true);
+  bouttonAcheter.parentNode.replaceChild(boutonAcheterClone, bouttonAcheter);
+  bouttonAcheter = boutonAcheterClone;
 
   document.querySelector('#start').removeEventListener('click', start);
   document.querySelector('#remplir').removeEventListener('click', remplir);
